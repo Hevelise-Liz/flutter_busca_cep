@@ -1,6 +1,6 @@
-# flutter_busca_cep
+# flutter_busca_cep 📍
 
-A new Flutter project.
+Este projeto é um App em Flutter fruto do Grupo de Estudos dos Alunos "Desenvolve 2024".
 
 ## Getting Started
 
