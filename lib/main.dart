@@ -35,35 +35,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(70.0), // Altura desejada da AppBar
-        child: AppBar(
-          backgroundColor: Colors.white,
-          title: Center(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 25.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    widget.title,
-                    style: const TextStyle(
-                      fontSize: 50,
-                      color: Colors.black,
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  const Icon(
-                    Icons.location_on,
-                    color: Colors.black,
-                    size: 35,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -79,12 +50,84 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 25.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            widget.title,
+                            style: const TextStyle(
+                              fontSize: 70,
+                              color: Colors.black,
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 8.0),
+                            child: Icon(
+                              Icons.location_on,
+                              color: Colors.black,
+                              size: 55,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: TextFormField(
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        labelText: 'DIGITE SEU CEP',
+                        labelStyle: TextStyle(fontSize: 22.0),
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 20.0, horizontal: 20.0),
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                      height: 16), // Espaçamento entre o TextFormField e a Row
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: const Text('BUSCAR',
+                            style: TextStyle(
+                              fontSize: 22,
+                            )),
+                      ),
+                      const SizedBox(width: 16),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: const Text(
+                          'LIMPAR',
+                          style: TextStyle(
+                            fontSize: 22,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  const Text('endereço aparecerá aqui'),
+                ],
+              ),
+            ),
             SizedBox(
-              width: 300,
-              height: 300,
-              child: Image.asset('assets/mapa.gif'),
+              width: 250,
+              height: 200,
+              child: Image.asset('assets/mapa.gif.gif'),
             ),
           ],
         ),
