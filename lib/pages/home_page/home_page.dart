@@ -53,7 +53,8 @@ class _MyHomePageState extends State<HomePage> {
       estado = json['uf'];
       cidade = json['localidade'];
       rua = json['logradouro'];
-      isLoading = false; //depois que retornar o que foi pedido, o loading encerra
+      isLoading =
+          false; //depois que retornar o que foi pedido, o loading encerra
     });
   }
 
@@ -129,9 +130,9 @@ class _MyHomePageState extends State<HomePage> {
                             },
                             decoration: const InputDecoration(
                               labelText: 'DIGITE SEU CEP',
-                              labelStyle: TextStyle(fontSize: 22.0),
+                              labelStyle: TextStyle(fontSize: 25.0),
                               contentPadding: EdgeInsets.symmetric(
-                                  vertical: 15.0, horizontal: 30.0),
+                                  vertical: 13.0, horizontal: 23.0),
                               border: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(40)),
@@ -162,7 +163,7 @@ class _MyHomePageState extends State<HomePage> {
                               },
                               style: ElevatedButton.styleFrom(
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 20, vertical: 10),
+                                    horizontal: 20, vertical: 8),
                                 elevation: 6, //sombra no botão
                                 shadowColor: Colors.black,
                               ),
@@ -184,13 +185,17 @@ class _MyHomePageState extends State<HomePage> {
                         Padding(
                           padding: const EdgeInsets.only(
                               left: 75, right: 75, top: 20),
-                          child: estado != null && cidade != null && rua != null //!= diferente, && e, || ou
+                          child: estado != null &&
+                                  cidade != null &&
+                                  rua != null //!= diferente, && e, || ou
                               ? isLoading == true //== igual
                                   ? const CircularProgressIndicator() //? condicional ternaria se
-                                  : MyText(text: '$rua, $cidade, $estado.') //: condicional ternaria senao
+                                  : MyText(
+                                      text:
+                                          '$rua, $cidade, $estado.') //: condicional ternaria senao
                               : MyText(
                                   text:
-                                      'CEP inexistente, digite novamente um CEP válido.',
+                                      'CEP inexistente, digite um CEP válido.',
                                   fontSize: 20,
                                 ),
                         ),
