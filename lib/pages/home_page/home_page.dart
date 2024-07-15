@@ -75,7 +75,7 @@ class _MyHomePageState extends State<HomePage> {
               end: Alignment.bottomCenter,
               colors: [
                 AppColors.primaryColor,
-                AppColors.secondaryColor,
+                AppColors.primaryColor,
                 AppColors.secondaryColor,
               ],
             ),
@@ -83,39 +83,24 @@ class _MyHomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 40.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        widget.title,
-                        style: const TextStyle(
-                          fontSize: 70,
-                          color: Colors.black,
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(left: 8.0),
-                        child: Icon(
-                          Icons.location_on,
-                          color: Colors.black,
-                          size: 50,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
               Expanded(
                 child: ListView(
                   children: [
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 0),
+                            child: SizedBox(
+                              width: 330,
+                              height: 140,
+                              child: Image.asset('assets/images/placa.png'),
+                            ),
+                          ),
+                        ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 70, right: 70),
+                          padding: const EdgeInsets.only(left: 82, right: 82),
                           child: TextFormField(
                             keyboardType: TextInputType.number,
                             controller: controllerCep,
@@ -130,18 +115,18 @@ class _MyHomePageState extends State<HomePage> {
                             },
                             decoration: const InputDecoration(
                               labelText: 'DIGITE SEU CEP',
-                              labelStyle: TextStyle(fontSize: 25.0),
+                              labelStyle: TextStyle(fontSize: 22.0),
                               contentPadding: EdgeInsets.symmetric(
-                                  vertical: 13.0, horizontal: 23.0),
+                                  vertical: 15.0, horizontal: 22.0),
                               border: OutlineInputBorder(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(40)),
+                                    BorderRadius.all(Radius.circular(6)),
                               ),
                             ),
                             style: const TextStyle(fontSize: 22.0),
                           ),
                         ),
-                        const SizedBox(height: 15),
+                        const SizedBox(height: 18),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -163,9 +148,13 @@ class _MyHomePageState extends State<HomePage> {
                               },
                               style: ElevatedButton.styleFrom(
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 20, vertical: 8),
+                                    horizontal: 20, vertical: 10),
                                 elevation: 6, //sombra no botão
                                 shadowColor: Colors.black,
+                                backgroundColor: Colors.grey.shade800,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                ),
                               ),
                               child: const Row(
                                 children: [
@@ -173,10 +162,12 @@ class _MyHomePageState extends State<HomePage> {
                                     'PESQUISAR',
                                     style: TextStyle(
                                       fontSize: 22,
+                                      color: AppColors.primaryColor,
                                     ),
                                   ),
                                   SizedBox(width: 8),
-                                  Icon(Icons.search),
+                                  Icon(Icons.search,
+                                      color: AppColors.primaryColor),
                                 ],
                               ),
                             ),
@@ -195,7 +186,7 @@ class _MyHomePageState extends State<HomePage> {
                                           '$rua, $cidade, $estado.') //: condicional ternaria senao
                               : MyText(
                                   text:
-                                      'CEP inexistente, digite um CEP válido.',
+                                      'CEP inexistente, digite novamente um CEP válido.',
                                   fontSize: 20,
                                 ),
                         ),
@@ -204,10 +195,13 @@ class _MyHomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              SizedBox(
-                width: 300,
-                height: 200,
-                child: Image.asset('assets/images/mapa.gif.gif'),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8, top: 8),
+                child: SizedBox(
+                  width: 280,
+                  height: 180,
+                  child: Image.asset('assets/images/mapa.gif'),
+                ),
               ),
             ],
           ),
