@@ -2,7 +2,12 @@
 
 Este projeto é um App em Flutter fruto do Grupo de Estudos dos Alunos "Desenvolve 2024".
 
-## Getting Started
+## Sobre o projeto:
+
+O projeto consiste em um App buscador de cep, com consumo de API do https://viacep.com.br/;
+O Design é autoral;
+
+## Sobre o Flutter:
 
 This project is a starting point for a Flutter application.
 
@@ -14,3 +19,8 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+#### Feito com ❤️ por Hevelise Dias.
+
+
+
