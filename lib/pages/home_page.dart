@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_busca_cep/controllers/cep_controller.dart';
-
 import 'package:flutter_busca_cep/models/cep_model.dart';
 import 'package:flutter_busca_cep/widgets/my_text.dart';
-
 import '../colors/app_colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,32 +14,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<HomePage> {
-  // Controlador de texto para o campo de entrada do CEP
   TextEditingController controllerCep = TextEditingController();
 
-  // FocusNode para controlar o foco do campo de entrada
   FocusNode cepFocusNode = FocusNode();
-
-  // Modelo para armazenar os dados do CEP
   var cep = CepModel();
-
-  // Controlador para buscar o CEP
   final controller = CepController();
-
-  // Flag para controlar a exibição da mensagem inicial
   bool initialMessage = true;
 
   @override
   void initState() {
     super.initState();
 
-    // Listener para detectar quando o campo de entrada ganha foco
     cepFocusNode.addListener(() {
       if (cepFocusNode.hasFocus) {
         setState(() {
-          initialMessage =
-              true; // Mostra a mensagem inicial quando o campo de entrada estiver em foco
-          cep = CepModel(); // Limpa os dados da busca anterior
+          initialMessage = true;
+          cep = CepModel();
         });
       }
     });
@@ -49,7 +37,6 @@ class _MyHomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    // Dispose do FocusNode para liberar recursos
     cepFocusNode.dispose();
     super.dispose();
   }
@@ -59,8 +46,7 @@ class _MyHomePageState extends State<HomePage> {
     return Scaffold(
       body: GestureDetector(
         onTap: () {
-          FocusScope.of(context)
-              .unfocus(); // Remove o foco do campo de entrada ao tocar em qualquer lugar da tela
+          FocusScope.of(context).unfocus();
         },
         child: Container(
           width: double.infinity,
@@ -91,32 +77,24 @@ class _MyHomePageState extends State<HomePage> {
                             child: SizedBox(
                               width: 330,
                               height: 140,
-                              child: Image.asset(
-                                  'assets/images/placa.png'), // Imagem de cabeçalho
+                              child: Image.asset('assets/images/placa.png'),
                             ),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 82, right: 82),
                           child: TextFormField(
-                            keyboardType: TextInputType
-                                .number, // Tipo de teclado numérico
-                            controller:
-                                controllerCep, // Controlador do campo de entrada
-                            focusNode:
-                                cepFocusNode, // FocusNode do campo de entrada
+                            keyboardType: TextInputType.number,
+                            controller: controllerCep,
+                            focusNode: cepFocusNode,
                             onTap: () {
                               setState(() {
-                                controllerCep
-                                    .clear(); // Limpa o texto do campo de entrada
-                                controller.isError =
-                                    false; // Reseta o estado de erro no controlador
-                                initialMessage =
-                                    true; // Mostra a mensagem inicial
-                                cep =
-                                    CepModel(); // Limpa os dados da busca anterior
+                                controllerCep.clear();
+                                controller.isError = false;
+                                initialMessage = true;
+                                cep = CepModel();
                                 FocusScope.of(context)
-                                    .requestFocus(cepFocusNode); // Foca no campo de entrada para mostrar o teclado
+                                    .requestFocus(cepFocusNode);
                               });
                             },
                             decoration: const InputDecoration(
@@ -138,20 +116,16 @@ class _MyHomePageState extends State<HomePage> {
                           children: [
                             ElevatedButton(
                               onPressed: () async {
-                                FocusScope.of(context)
-                                    .unfocus(); // Remove o foco do campo de entrada para ocultar o teclado
+                                FocusScope.of(context).unfocus();
                                 if (controllerCep.text.length == 8 &&
                                     int.tryParse(controllerCep.text) != null) {
                                   try {
                                     cep = await controller
                                         .searchCep(controllerCep.text);
                                     setState(() {
-                                      initialMessage =
-                                          false; // Oculta a mensagem inicial após a pesquisa
+                                      initialMessage = false;
                                     });
-                                  } catch (e) {
-                                    // O erro será tratado no controller
-                                  }
+                                  } catch (e) {}
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
@@ -197,27 +171,27 @@ class _MyHomePageState extends State<HomePage> {
                             animation: controller,
                             builder: (context, child) {
                               if (controller.isLoading) {
-                                return const CircularProgressIndicator(); // Mostra o indicador de carregamento se estiver carregando
+                                return const CircularProgressIndicator();
                               }
 
                               if (controller.isError) {
                                 return const MyText(
                                   text:
-                                      'CEP inexistente, digite um CEP válido.', // Mostra a mensagem de erro se houver um erro
+                                      'CEP inexistente, digite um CEP válido.',
                                   fontSize: 20,
                                 );
                               }
 
                               if (initialMessage) {
                                 return const MyText(
-                                  text: '', // Mostra a mensagem inicial
+                                  text: '',
                                   fontSize: 20,
                                 );
                               }
 
                               return MyText(
                                 text:
-                                    '${cep.cep}, ${cep.estado}, ${cep.cidade}, ${cep.bairro}, ${cep.rua}.', // Mostra os dados do CEP pesquisado
+                                    '${cep.cep}, ${cep.estado}, ${cep.cidade}, ${cep.bairro}, ${cep.rua}.',
                               );
                             },
                           ),
@@ -232,8 +206,7 @@ class _MyHomePageState extends State<HomePage> {
                 child: SizedBox(
                   width: 280,
                   height: 180,
-                  child:
-                      Image.asset('assets/images/mapa.gif'), 
+                  child: Image.asset('assets/images/mapa.gif'),
                 ),
               ),
             ],

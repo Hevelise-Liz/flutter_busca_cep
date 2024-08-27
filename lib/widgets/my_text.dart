@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class MyText extends StatelessWidget {
   final String text;
- final double fontSize;
- const MyText({
+  final double fontSize;
+  const MyText({
     super.key,
     required this.text,
     this.fontSize = 22.0,

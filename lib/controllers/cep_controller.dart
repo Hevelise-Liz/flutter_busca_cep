@@ -10,7 +10,7 @@ class CepController extends ChangeNotifier {
   Future<CepModel> searchCep(String cep) async {
     isLoading = true;
     isError = false;
-    notifyListeners(); //tá escutando pra passar pra home_page
+    notifyListeners();
 
     try {
       String url = 'https://viacep.com.br/ws/$cep/json/';
@@ -28,7 +28,7 @@ class CepController extends ChangeNotifier {
       isError = true;
       isLoading = false;
       notifyListeners();
-      return CepModel(); //retorna um modelo vazio em caso de erro
+      return CepModel();
     }
   }
 }
